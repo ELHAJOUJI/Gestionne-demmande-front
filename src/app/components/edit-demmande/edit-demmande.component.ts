@@ -127,6 +127,8 @@ this.demmandeservice.UpdateDemmande(this.D,this.D.id).subscribe(
   }
 );
 
+this.router.navigate(["/pageaccueil"]); 
+
 }
 
 }
