@@ -1,0 +1,75 @@
+
+input{
+   
+    width: 450px;
+    height: 45px;
+    border: 1px solid black;
+}
+
+
+.container{
+  margin-top: 100px;
+  transform: translate(28%);
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto ;
+  gap:18px;
+}
+
+
+
+p{
+  color: rgb(253, 0, 0);
+  transform: translate(32%);
+}
+
+.create{
+  width: 450px;
+  height: 45px;
+  border: 1px solid black;
+  cursor: pointer;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  background-color: black;
+}
+
+
+
+a{
+  color: red;
+  text-decoration: none;
+ 
+}
+
+.aa{
+  
+  transform: translate(15%);
+}
+
+.ab{
+  color: red;
+  transform: translate(17%);
+}
+
+
+.create:hover{
+  color: black;
+  background-color: white;
+}
+
+::placeholder {
+ 
+    
+   position: relative;
+   left: 20px;
+  }
+
+  #w3review{
+
+    width: 455px;
+  }
+
+  #cars{
+
+    width: 455px;
+  }

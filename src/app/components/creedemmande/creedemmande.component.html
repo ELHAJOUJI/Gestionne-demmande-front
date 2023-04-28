@@ -1,0 +1,56 @@
+<form action="" [formGroup]="signinForm">
+
+  <div class="container">
+
+
+    
+      
+     
+     <div class="input1">
+       <input type="text"  id="Password1" placeholder="Nom*" [formControl]="nom">
+     </div>
+
+     <div class="input2">
+       <input type="text"  id="Password1" placeholder="Tel*" [formControl]="tel">
+     </div>
+
+
+      <div class="input3">
+      <input type="email"  id="Email1" placeholder="Email*" [formControl]="email">
+      </div>
+
+      <div class="input3">
+        
+        <input type="date" id="start" name="trip-start"
+      
+       min="2023-01-01" max="2024-12-31" id="Email1" placeholder="datesouhaite*" [formControl]="datesouhaite">
+        </div>
+
+        <div class="input3">
+          <input type="text"  id="Password1"  placeholder="superficie*" [formControl]="superficie">
+          </div>
+
+          <div class="input3">
+            <input type="text"  id="Password1"  placeholder="ice*" [formControl]="ice">
+            </div>
+
+          
+      
+          <textarea id="w3review" name="w3review" rows="4" cols="50" [formControl]="objectif"></textarea>
+     
+          <select name="cars" id="cars" [formControl]="typedemande">
+            <option value="Professionel">Professionel</option>
+            <option value="Particuliere">Particuliere</option>
+           
+          </select>
+
+    <div class="create" (click)="handleSubmit()" >CREATE</div>
+
+ 
+  </div>
+
+  
+  
+</form>
+
+

@@ -1,0 +1,39 @@
+<ul>
+  <li><a class="active" [routerLink]="['/ajout']">Creer Demmande</a></li>
+  
+  
+</ul>
+
+
+<div class="container" *ngIf="Demmandes"> 
+    
+    <table class="table" id="customers"> 
+
+ <tr>
+  <th>ID</th> <th>NOM</th> <th>EMAIL</th> <th>SUPERFICIE</th> <th>ICE</th> <th>OBJECTIF</th> <th>TYPEDEMANDEUR</th> <th>DATESOUHAITE</th>
+   <th>TELEPHONE</th> <th>SUPPRIMER</th> <th>MODIFIER</th> <th>OUVRIRE</th>
+
+ </tr>
+
+ <tr *ngFor="let D of Demmandes">
+    <td>{{D.id}}</td>
+    <td>{{D.nom}}</td>
+    <td>{{D.email}}</td>
+    <td>{{D.superficie}}</td>
+    <td>{{D.ice}}</td>
+    <td>{{D.objectif}}</td>
+    <td>{{D.typedemande}}</td>
+    <td>{{D.datesouhaite}}</td>
+    <td>{{D.tel}}</td>
+    <td> <button class="btn btn-danger" (click)="onDelete(D.id)"> Supprimer</button> </td>
+    <td> <button class="btn btn-primary" (click)="onEdit(D.id)"> Modifier</button> </td>
+    <td> <button class="btn btn-success" (click)="onDisplay(D.id)"> Ouvrire</button> </td>
+
+
+
+ </tr>
+    </table>
+    
+    
+    
+    <div>
