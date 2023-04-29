@@ -1,7 +1,14 @@
 <ul>
   <li><a class="active" [routerLink]="['/ajout']">Creer Demmande</a></li>
+  <li class="search"> <button class="btn btn-danger" (click)="SearchDemmande()">Search</button> </li>
+  <form action="" [formGroup]="signinForm" >
+
   
-  
+  <li class="field">  <input type="text"  id="Password1" placeholder="search*" [formControl]="nom">   </li> 
+
+ </form>
+ 
+ 
 </ul>
 
 
@@ -22,7 +29,7 @@
     <td>{{D.superficie}}</td>
     <td>{{D.ice}}</td>
     <td>{{D.objectif}}</td>
-    <td>{{D.typedemande}}</td>
+    <td>{{D.typeDemmandeur}}</td>
     <td>{{D.datesouhaite}}</td>
     <td>{{D.tel}}</td>
     <td> <button class="btn btn-danger" (click)="onDelete(D.id)"> Supprimer</button> </td>

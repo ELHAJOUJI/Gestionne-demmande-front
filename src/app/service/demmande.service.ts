@@ -60,6 +60,13 @@ export class Demmandeservice{
    }
 
 
+   SearchDemmande(nom:any):Observable<Demmande[]> {
+    const url = `http://localhost:8080/Searchdemmande/`+nom;
+    return this.http.get<Demmande[]>(url);
+   
+   }
+
+
 
 
 

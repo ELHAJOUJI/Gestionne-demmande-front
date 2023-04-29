@@ -53,3 +53,18 @@
   button{
 color:black
   }
+
+  .search{
+
+    margin-left: 1120px;
+    margin-top:35px;
+    
+  }
+
+  .field{
+    margin-left: 1000px;
+    margin-bottom: 10px;
+    position: relative; 
+    top: -35px;
+    left: 65px;
+  }

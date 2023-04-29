@@ -27,7 +27,7 @@ export class DisplayDemmandeComponent {
    objectif:'',
    email: '',
    tel: '',
-   typedemande: '',
+   typeDemmandeur: '',
    datesouhaite:new Date(),
    superficie:'',
    ice:'',
@@ -93,7 +93,7 @@ signinForm:FormGroup ;
    this.D.superficie=demmande.superficie;
    this.D.tel=demmande.tel;
    this.D.datesouhaite=demmande.datesouhaite;
-   this.D.typedemande=demmande.typedemande;
+   this.D.typeDemmandeur=demmande.typeDemmandeur;
    });
 }
 

@@ -27,7 +27,7 @@ export class EditDemmandeComponent {
    objectif:'',
    email: '',
    tel: '',
-   typedemande: '',
+   typeDemmandeur: '',
    datesouhaite:new Date(),
    superficie:'',
    ice:'',
@@ -93,7 +93,7 @@ signinForm:FormGroup ;
    this.D.superficie=demmande.superficie;
    this.D.tel=demmande.tel;
    this.D.datesouhaite=demmande.datesouhaite;
-   this.D.typedemande=demmande.typedemande;
+   this.D.typeDemmandeur=demmande.typeDemmandeur;
    });
 }
 
@@ -104,7 +104,7 @@ Update(){
   this.D.email=this.email.value;
   this.D.objectif=this.objectif.value;
   this.D.tel=this.tel.value;
-  this.D.typedemande=this.typedemande.value;
+  this.D.typeDemmandeur=this.typedemande.value;
   this.D.superficie=this.superficie.value;
   this.D.datesouhaite=this.datesouhaite.value;
   this.D.ice=this.ice.value;
@@ -114,7 +114,7 @@ console.log(this.D.email);
 console.log(this.D.objectif);
 console.log(this.D.tel);
 console.log(this.D.superficie);
-console.log(this.D.typedemande);
+console.log(this.D.typeDemmandeur);
 console.log(this.D.ice);
 
 

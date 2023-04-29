@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Demmandeservice } from 'src/app/service/demmande.service';
 import { Demmande } from 'src/app/model/Demmande.model';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -32,7 +32,7 @@ export class CreedemmandeComponent {
    objectif:'',
    email: '',
    tel: '',
-   typedemande: '',
+   typeDemmandeur: '',
    datesouhaite:new Date(),
    superficie:'',
    ice:'',
@@ -40,14 +40,14 @@ export class CreedemmandeComponent {
   
 
   constructor(private fb:FormBuilder,private demmandeservice:Demmandeservice,private router:Router){
-    this.email=fb.control("")
-    this.nom=fb.control("")
-    this.tel=fb.control("")
-    this.objectif=fb.control("")
-    this.datesouhaite=fb.control("")
-    this.superficie=fb.control("")
-    this.typedemande=fb.control("")
-    this.ice=fb.control("")
+    this.email=fb.control("",[Validators.required,Validators.email])
+    this.nom=fb.control("",[Validators.required])
+    this.tel=fb.control("",[Validators.required])
+    this.objectif=fb.control("",[Validators.required])
+    this.datesouhaite=fb.control("",[Validators.required])
+    this.superficie=fb.control("",[Validators.required, Validators.pattern(/^[0-9]+$/)])
+    this.typedemande=fb.control("",[Validators.required])
+    this.ice=fb.control("",[Validators.required, Validators.pattern(/^[0-9]+$/)])
 
      
     this.signinForm=fb.group({
@@ -103,7 +103,7 @@ export class CreedemmandeComponent {
       this.D.email=this.email.value;
       this.D.objectif=this.objectif.value;
       this.D.tel=this.tel.value;
-      this.D.typedemande=this.typedemande.value;
+      this.D.typeDemmandeur=this.typedemande.value;
       this.D.superficie=this.superficie.value;
       this.D.datesouhaite=this.datesouhaite.value;
       this.D.ice=this.ice.value;
@@ -113,7 +113,7 @@ export class CreedemmandeComponent {
     console.log(this.D.objectif);
     console.log(this.D.tel);
     console.log(this.D.superficie);
-    console.log(this.D.typedemande);
+    console.log(this.D.typeDemmandeur);
     console.log(this.D.ice);
       
      

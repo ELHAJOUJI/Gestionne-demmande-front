@@ -5,7 +5,7 @@ export interface Demmande{
     email:string;
     tel:string;
     objectif:string;
-    typedemande:string;
+    typeDemmandeur:string;
     datesouhaite:Date;
     superficie:string;
     ice:string;

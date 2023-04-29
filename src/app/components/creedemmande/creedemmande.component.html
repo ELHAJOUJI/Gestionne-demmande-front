@@ -8,15 +8,30 @@
      
      <div class="input1">
        <input type="text"  id="Password1" placeholder="Nom*" [formControl]="nom">
+       <div *ngIf="nom.invalid && (nom.dirty || nom.touched)">
+        <div *ngIf="nom.errors?.['required']" class="error">Le champ Nom est obligatoire.</div>
+      </div>
      </div>
 
      <div class="input2">
        <input type="text"  id="Password1" placeholder="Tel*" [formControl]="tel">
+       
+      <div *ngIf="tel.invalid && (tel.dirty || tel.touched)">
+        <div *ngIf="tel.errors?.['required']" class="error">Le champ Telephone est obligatoire.</div>
+    
+      </div>
      </div>
 
 
       <div class="input3">
       <input type="email"  id="Email1" placeholder="Email*" [formControl]="email">
+
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <div *ngIf="email.errors?.['required']" class="error">Le champ Date est obligatoire.</div>
+        <div *ngIf="email.errors?.['email']" class="error">Le champ Email est de Type Email.</div>
+    
+      </div>
+
       </div>
 
       <div class="input3">
@@ -24,23 +39,48 @@
         <input type="date" id="start" name="trip-start"
       
        min="2023-01-01" max="2024-12-31" id="Email1" placeholder="datesouhaite*" [formControl]="datesouhaite">
+
+       
+
+       <div *ngIf="datesouhaite.invalid && (datesouhaite.dirty || datesouhaite.touched)">
+        <div *ngIf="datesouhaite.errors?.['required']" class="error">Le champ Date est obligatoire.</div>
+    
+      </div>
+
         </div>
 
         <div class="input3">
-          <input type="text"  id="Password1"  placeholder="superficie*" [formControl]="superficie">
+          <input type="text"  id="Password1"  placeholder="superficie *" [formControl]="superficie">
+          <div *ngIf="superficie.invalid && (superficie.dirty || superficie.touched)">
+            <div *ngIf="superficie.errors?.['required']" class="error">Le superficie est obligatoire.</div>
+            <div *ngIf="superficie.errors?.['pattern']" class="error">Le superficie doit être un nombre.</div>
+          </div>
           </div>
 
           <div class="input3">
             <input type="text"  id="Password1"  placeholder="ice*" [formControl]="ice">
+            <div *ngIf="ice.invalid && (ice.dirty || ice.touched)">
+              <div *ngIf="ice.errors?.['required']" class="error">Le champ ICE est obligatoire.</div>
+              <div *ngIf="ice.errors?.['pattern']" class="error">Le champ ICE doit être un nombre.</div>
+            </div>
             </div>
 
           
       
           <textarea id="w3review" name="w3review" rows="4" cols="50" [formControl]="objectif"></textarea>
-     
+          <div *ngIf="objectif.invalid && (objectif.dirty || objectif.touched)">
+            <div *ngIf="objectif.errors?.['required']" class="error">Le champ objectif est obligatoire.</div>
+        
+          </div>
+    
           <select name="cars" id="cars" [formControl]="typedemande">
             <option value="Professionel">Professionel</option>
             <option value="Particuliere">Particuliere</option>
+
+            <div *ngIf="typedemande.invalid && (typedemande.dirty || typedemande.touched)">
+              <div *ngIf="typedemande.errors?.['required']" class="error">Le champ Typedemande est obligatoire.</div>
+          
+            </div>
            
           </select>
 

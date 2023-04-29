@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Demmande } from 'src/app/model/Demmande.model';
@@ -14,8 +15,18 @@ export class DemmandeListComponent {
   DemmandeSub: Subscription | undefined
 
   Demmandes:Demmande[]=[] ;
+  nom: FormControl;
+  signinForm:FormGroup ;
+  name:any;
+  constructor(private demmandeservice:Demmandeservice,private router:Router,private fb:FormBuilder){
+    this.nom=fb.control("")
 
-  constructor(private demmandeservice:Demmandeservice,private router:Router){}
+    this.signinForm=fb.group({
+     
+      nom:this.nom
+     })
+     
+  }
 
 
   ngOnInit(): void {
@@ -42,6 +53,10 @@ export class DemmandeListComponent {
     }
 
     )
+
+    console.log("/////////////////////////////////////////////////////////////////////////////");
+
+    
     
     
 }
@@ -58,11 +73,11 @@ this.demmandeservice.deleteDemmande(id).subscribe(
   }
 );
  
-this.router.navigate(["/pageaccueil"]); 
-this.router.navigateByUrl("/pageaccueil");
-//this.router.navigate(['/example']);
+/* this.refreshComponent() ;
 
-}
+//this.router.navigate(['/example']);
+*/
+} 
 
 onEdit(id:any){
   
@@ -72,6 +87,42 @@ onEdit(id:any){
 onDisplay(id:any){
 
   this.router.navigateByUrl("/afficher/"+id);
+}
+
+
+/* refreshComponent() {
+  this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['pageaccueil']);
+  });
+} */
+
+SearchDemmande(){
+  this.name=this.nom.value;
+  console.log();
+  this.DemmandeSub=this.demmandeservice.SearchDemmande(this.name).subscribe({
+
+    next:(value:Demmande[])=>{
+
+      this.Demmandes=value
+      console.log(this.Demmandes)
+      console.log(value);
+
+    },
+
+    error:(error:any)=>{
+      console.log(error);  
+    },
+    complete:()=>{
+      //console.log("Completed");
+
+    }
+
+
+
+  }
+
+  )
+
 }
 
 }

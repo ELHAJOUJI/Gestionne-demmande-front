@@ -72,3 +72,7 @@ a{
 
     width: 455px;
   }
+
+  .error{
+    color:red;
+  }
