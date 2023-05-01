@@ -116,7 +116,7 @@ export class CreedemmandeComponent {
     console.log(this.D.typeDemmandeur);
     console.log(this.D.ice);
       
-     
+   console.log(this.signinForm.valid) 
       this.demmandeservice.SaveDemmande(this.D);
       
       this.router.navigate(["/pageaccueil"]); 
