@@ -29,6 +29,7 @@ export class EditDemmandeComponent {
    tel: '',
    typeDemmandeur: '',
    datesouhaite:new Date(),
+   datemmande:new Date(),
    superficie:'',
    ice:'',
   };
@@ -130,5 +131,12 @@ this.demmandeservice.UpdateDemmande(this.D,this.D.id).subscribe(
 this.router.navigate(["/pageaccueil"]); 
 
 }
+
+
+
+handleSubmit(){
+  this.router.navigateByUrl("/pageaccueil");
+}
+
 
 }

@@ -7,6 +7,7 @@ export interface Demmande{
     objectif:string;
     typeDemmandeur:string;
     datesouhaite:Date;
+    datemmande:Date;
     superficie:string;
     ice:string;
    

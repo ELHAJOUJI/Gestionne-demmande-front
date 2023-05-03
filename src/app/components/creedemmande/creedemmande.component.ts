@@ -34,15 +34,16 @@ export class CreedemmandeComponent {
    tel: '',
    typeDemmandeur: '',
    datesouhaite:new Date(),
+   datemmande:new Date(),
    superficie:'',
    ice:'',
   };
   
 
   constructor(private fb:FormBuilder,private demmandeservice:Demmandeservice,private router:Router){
-    this.email=fb.control("",[Validators.required,Validators.email])
+    this.email=fb.control("",[Validators.required,Validators.email,Validators.pattern(/^.*@.+?\..+$/)])
     this.nom=fb.control("",[Validators.required])
-    this.tel=fb.control("",[Validators.required])
+    this.tel=fb.control("",[Validators.required,Validators.pattern(/^[0-9]+$/)])
     this.objectif=fb.control("",[Validators.required])
     this.datesouhaite=fb.control("",[Validators.required])
     this.superficie=fb.control("",[Validators.required, Validators.pattern(/^[0-9]+$/)])
@@ -122,6 +123,9 @@ export class CreedemmandeComponent {
       this.router.navigate(["/pageaccueil"]); 
      
     
+    }
+    handleSubmit2(){
+      this.router.navigateByUrl("/pageaccueil");
     }
 
 }

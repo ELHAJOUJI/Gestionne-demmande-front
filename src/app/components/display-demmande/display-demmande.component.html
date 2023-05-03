@@ -19,45 +19,51 @@
         
        
        <div class="input1">
-         <input type="text"  id="Password1" placeholder="Nom*" [formControl]="nom" [ngModel]="D.nom">
+         <input type="text"  id="Password1" placeholder="Nom*" [formControl]="nom" readonly [ngModel]="D.nom">
        </div>
   
        <div class="input2">
-         <input type="text"  id="Password1" placeholder="Tel*" [formControl]="tel" [ngModel]="D.tel">
+         <input type="text"  id="Password1" placeholder="Tel*" [formControl]="tel" readonly [ngModel]="D.tel">
        </div>
   
   
         <div class="input3">
-        <input type="email"  id="Email1" placeholder="Email*" [formControl]="email" [ngModel]="D.email">
+        <input type="email"  id="Email1" placeholder="Email*" [formControl]="email" readonly [ngModel]="D.email">
         </div>
   
         <div class="input3">
           
           <input type="date" id="start" name="trip-start"
         
-         min="2023-01-01" max="2024-12-31" id="Email1" placeholder="datesouhaite*" [formControl]="datesouhaite" [ngModel]="D.datesouhaite">
+         min="2023-01-01" max="2024-12-31" id="Email1" placeholder="datesouhaite*" readonly [formControl]="datesouhaite" [ngModel]="D.datesouhaite">
           </div>
-  
+
+          
           <div class="input3">
-            <input type="text"  id="Password1"  placeholder="superficie*" [formControl]="superficie" [ngModel]="D.superficie">
+            <input type="text"  id="Password1"  placeholder="superficie*" readonly [formControl]="superficie" [ngModel]="D.superficie">
             </div>
   
             <div class="input3">
-              <input type="text"  id="Password1"  placeholder="ice*" [formControl]="ice" [ngModel]="D.ice">
+              <input type="text"  id="Password1"  placeholder="ice*" readonly [formControl]="ice" [ngModel]="D.ice">
               </div>
   
             
         
-            <textarea id="w3review" name="w3review" rows="4" cols="50" [formControl]="objectif" [ngModel]="D.objectif" ></textarea>
+            <textarea id="w3review" name="w3review" rows="4" cols="50" [formControl]="objectif" readonly [ngModel]="D.objectif" ></textarea>
        
-            <select name="cars" id="cars" [formControl]="typedemande" [ngModel]="D.typeDemmandeur">
+            <select name="cars" id="cars" [formControl]="typedemande" readonly [ngModel]="D.typeDemmandeur">
               <option value="Professionel">Professionel</option>
-              <option value="Particuliere">Particuliere</option>
+              <option value="Particuliere" > Particuliere</option>
              
             </select>
+
+            <input type="date" id="start" name="trip-start"
+        
+         min="2023-01-01" max="2024-12-31" id="Email1" placeholder="datesouhaite*" readonly [formControl]="datedemmande" [ngModel]="D.datemmande">
+          
   
      
-  
+            <button class="create"   (click)="handleSubmit()" >Page d'acceuil</button>
    
     </div>
   

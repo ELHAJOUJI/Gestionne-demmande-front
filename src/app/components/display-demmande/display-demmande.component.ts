@@ -15,6 +15,7 @@ export class DisplayDemmandeComponent {
   tel: FormControl  ;
   objectif: FormControl  ;
   datesouhaite: FormControl  ;
+  datedemmande: FormControl  ;
   
   typedemande:FormControl  ;
   superficie:FormControl  ;
@@ -29,6 +30,7 @@ export class DisplayDemmandeComponent {
    tel: '',
    typeDemmandeur: '',
    datesouhaite:new Date(),
+   datemmande:new Date(),
    superficie:'',
    ice:'',
   };
@@ -46,6 +48,8 @@ signinForm:FormGroup ;
     this.superficie=fb.control("")
     this.typedemande=fb.control("")
     this.ice=fb.control("")
+    this.datedemmande=fb.control("")
+
 
       this.signinForm=fb.group({
       email:this.email,
@@ -56,6 +60,7 @@ signinForm:FormGroup ;
       superficie:this.superficie,
       typedemande:this.typedemande,
       ice:this.ice,
+      datedemmande:this.datedemmande
       
 
 
@@ -94,10 +99,14 @@ signinForm:FormGroup ;
    this.D.tel=demmande.tel;
    this.D.datesouhaite=demmande.datesouhaite;
    this.D.typeDemmandeur=demmande.typeDemmandeur;
+   this.D.datemmande=demmande.datemmande;
+   console.log(this.D.typeDemmandeur);
    });
 }
 
 
-
+handleSubmit(){
+  this.router.navigateByUrl("/pageaccueil");
+}
 
 }

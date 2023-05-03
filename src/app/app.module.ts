@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { CreedemmandeComponent } from './components/creedemmande/creedemmande.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DemmandeListComponent } from './components/demmande-list/demmande-list.component';
 import { EditDemmandeComponent } from './components/edit-demmande/edit-demmande.component';
 import { Demmandeservice } from './service/demmande.service';
 import { DisplayDemmandeComponent } from './components/display-demmande/display-demmande.component';
+import * as jsPDF from 'jspdf';
+import { ToastrModule } from 'ngx-toastr';
 
 const routes: Routes = [
  
@@ -37,19 +40,21 @@ const routes: Routes = [
     DemmandeListComponent,
     EditDemmandeComponent,
     DisplayDemmandeComponent,
+    
       
   ],
   imports: [
    
 
     BrowserModule,
-    
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
 
 
+  
 
 
 
@@ -57,8 +62,7 @@ const routes: Routes = [
 
 
 
-
-
+    ToastrModule.forRoot(),
 
     
     RouterModule.forRoot(routes)

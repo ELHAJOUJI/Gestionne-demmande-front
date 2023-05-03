@@ -68,3 +68,30 @@ color:black
     top: -35px;
     left: -25px;
   }
+
+
+  #cars{
+    position: relative;
+    left: 700px;
+    top:90px;
+    width: 100px;
+    height: 30px;
+  }
+
+
+#edite{
+ 
+  position: relative;
+  left: 1215px;
+  bottom: 30px;
+}
+
+
+
+
+.my-toast {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+  

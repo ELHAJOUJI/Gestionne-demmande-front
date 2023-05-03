@@ -23,7 +23,7 @@
        
       <div *ngIf="tel.invalid && (tel.dirty || tel.touched)">
         <div *ngIf="tel.errors?.['required']" class="error">Le champ Telephone est obligatoire.</div>
-    
+        <div *ngIf="tel.errors?.['pattern']" class="error">Le téléphone est un champs numérique.</div>
       </div>
      </div>
 
@@ -34,7 +34,7 @@
       <div *ngIf="email.invalid && (email.dirty || email.touched)">
         <div *ngIf="email.errors?.['required']" class="error">Le champ Date est obligatoire.</div>
         <div *ngIf="email.errors?.['email']" class="error">Le champ Email est de Type Email.</div>
-    
+      
       </div>
 
       </div>
@@ -58,7 +58,7 @@
           <input type="text"  id="Password1"  placeholder="superficie *" [formControl]="superficie">
           <div *ngIf="superficie.invalid && (superficie.dirty || superficie.touched)">
             <div *ngIf="superficie.errors?.['required']" class="error">Le superficie est obligatoire.</div>
-            <div *ngIf="superficie.errors?.['pattern']" class="error">Le superficie doit être un nombre.</div>
+            <div *ngIf="superficie.errors?.['pattern']" class="error">Le superficie est un champs numérique.</div>
           </div>
           </div>
 
@@ -66,7 +66,7 @@
             <input type="text"  id="Password1"  placeholder="ice*" [formControl]="ice">
             <div *ngIf="ice.invalid && (ice.dirty || ice.touched)">
               <div *ngIf="ice.errors?.['required']" class="error">Le champ ICE est obligatoire.</div>
-              <div *ngIf="ice.errors?.['pattern']" class="error">Le champ ICE doit être un nombre.</div>
+              <div *ngIf="ice.errors?.['pattern']" class="error">Le ICE est un champs numérique.</div>
             </div>
             </div>
 
@@ -84,12 +84,13 @@
 
             <div *ngIf="typedemande.invalid && (typedemande.dirty || typedemande.touched)">
               <div *ngIf="typedemande.errors?.['required']" class="error">Le champ Typedemande est obligatoire.</div>
-          
+              
             </div>
            
           </select>
           <div style="margin-top:20px;">
     <button class="create" [disabled]="!this.signinForm.valid" ng-disabled="expression" (click)="handleSubmit()" >CREATE</button>
+   
 
   </div>
   </div>
