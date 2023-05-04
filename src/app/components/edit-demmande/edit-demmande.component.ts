@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Demmande as Demands, Demmande } from 'src/app/model/Demmande.model';
 import { Demmandeservice } from 'src/app/service/demmande.service';
 
+
 @Component({
   selector: 'app-edit-demmande',
   templateUrl: './edit-demmande.component.html',
@@ -98,7 +99,6 @@ signinForm:FormGroup ;
    });
 }
 
-
 Update(){
 
   this.D.nom=this.nom.value;
@@ -122,13 +122,17 @@ console.log(this.D.ice);
 this.demmandeservice.UpdateDemmande(this.D,this.D.id).subscribe(
   (response) => {
     // Handle successful response from the server
+   
   },
   (error) => {
     // Handle error response from the server
   }
 );
 
+alert("succes product update")
 this.router.navigate(["/pageaccueil"]); 
+
+
 
 }
 

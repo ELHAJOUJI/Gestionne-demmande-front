@@ -19,6 +19,8 @@ import * as saveAs from 'file-saver';
 import {  ViewEncapsulation, Inject, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { ButtonComponent } from '@syncfusion/ej2-angular-buttons';
 import { ToastComponent,ToastCloseArgs, ToastPositionModel } from '@syncfusion/ej2-angular-notifications';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { style } from '@angular/animations';
 
 interface jsPDFWithPlugin extends jspdf{
   autotable:(options:UserOptions)=>jspdf;
@@ -30,7 +32,7 @@ interface jsPDFWithPlugin extends jspdf{
   styleUrls: ['./demmande-list.component.css']
 })
 export class DemmandeListComponent {
-
+  confirmDelete = false;
   DemmandeSub: Subscription | undefined
 
   Demmandes:Demmande[]=[] ;
@@ -42,6 +44,8 @@ export class DemmandeListComponent {
   signinForm:FormGroup ;
   name:any;
   data2:any;
+  id:any;
+  pageAlreadyReloaded = false;
 
   D: Demmande={
     id:'',
@@ -83,13 +87,15 @@ export class DemmandeListComponent {
 
   ngOnInit(): void {
 
+    console.log("vous etes en ngonit de la composant demmande-list");
+    
     this.DemmandeSub=this.demmandeservice.getAllProducts().subscribe({
 
       next:(value:Demmande[])=>{
 
         this.Demmandes=value
         this.Demmandes3=value
-        console.log(this.Demmandes)
+     
 
       },
 
@@ -106,24 +112,23 @@ export class DemmandeListComponent {
     }
 
     )
-console.log("/////////////////////////////////////////////////////////////////////////////");
 
-    
+
+      console.log("");
     
     
 }
 
 onDelete(id:any){
+  console.log(this.id);
 
-  
-  
  
   this.toastr.success('Supprimer le demmande!', ' Vous avez bien', { 
     positionClass: 'toast-center' 
   });
 
  
-this.demmandeservice.deleteDemmande(id).subscribe(
+this.demmandeservice.deleteDemmande(this.id).subscribe(
   (response) => {
     // Handle successful response from the server
   },
@@ -131,12 +136,21 @@ this.demmandeservice.deleteDemmande(id).subscribe(
     // Handle error response from the server
   }
 );
- 
-
-
-
+this.confirmDelete = false;
  setTimeout(() =>{ window.location.reload()},2000); 
+
+
+ 
 } 
+
+
+
+
+deleteItem(id:any): void {
+  console.log(id);
+  this.id=id;
+  this.confirmDelete = true;
+}
 
 onEdit(id:any){
   
@@ -246,15 +260,8 @@ else{
 }
 
 generatePdf(id:any) {
- /*  const doc = new jsPDF();
  
-  doc.text('Mon objet TypeScript : ' + JSON.stringify(this.P), 20, 20);
-
-
-  
-  doc.save('mon-document.pdf'); */
-  
-  this.demmandeservice.getDemmande(id).subscribe(demmande=>{
+   this.demmandeservice.getDemmande(id).subscribe(demmande=>{
    this.D.id=demmande.id;
    this.D.nom=demmande.nom;
    this.D.email=demmande.email;
@@ -267,37 +274,83 @@ generatePdf(id:any) {
    this.D.typeDemmandeur=demmande.typeDemmandeur;
    });
 
+
+
   const doc = new jspdf('portrait','px','a3') as jsPDFWithPlugin;
-/*d oc.autotable({
   
-  head:[['Name','Email','Country']],
-  body:[
+  doc.text('LES DÉTAILLES DE DEMANDE EN PDF', 190, 50).setFontSize(15);
+  doc.setPage(1)
 
-    ['David','tafhef','AZERTY']
-  ]
+  //const myObjectString = JSON.stringify(myObject, null, 4);
+   // const lines = myObjectString.split('\n');
+    let y = 120;
+    
+      doc.text(`ID` + ': ' + this.D.id, 50, y);
+      y += 20;
 
-})
-   */
+      doc.text(`NOM` + ': ' +  this.D.nom, 50, y);
+      y += 20;
+
+      doc.text(`EMAIL` + ': ' +  this.D.email, 50, y);
+      y += 20;
+
+      doc.text(`ICE` + ': ' + this.D.ice, 50, y);
+      y += 20;
+
+      doc.text(`OBJECTIF` + ': ' + this.D.objectif, 50, y);
+      y += 20;
+
+      doc.text(`SUPERFICIE` + ': ' + this.D.superficie, 50, y);
+      y += 20;
+
+      doc.text(`TELEPHONE` + ': ' + this.D.tel, 50, y);
+      y += 20;
+
+      doc.text(`DATESOUHAITE` + ': ' + this.D.datesouhaite, 50, y);
+      y += 20;
 
 
-// Example usage of columns property. Note that America will not be included even though it exist in the body since there is no column specified for it.
+      doc.text(`DATEDEMANDE` + ': ' + this.D.datemmande, 50, y);
+      y += 20;
 
-console.log("lllllllllllllllllllllll");
 
-autoTable(doc, {
+      doc.text(`TYPEDEMANDEUR` + ': ' + this.D.typeDemmandeur, 50, y);
+      y += 20;
+    
+
+   /*  lines.forEach((line) => {
+      doc.text(line, 10,y);
+      y += 10;
+    }); */
+  /* autoTable(doc, {
   head:[['ID','NOM','EMAIL','SUPERFICIE','ICE','OBJECTIF','TYPEDEMANDEUR','DATESOUHAITE','TELEPHONE','DATEDEMMANDE']],
   body:[
 
   [this.D.id,this.D.nom,this.D.email,this.D.superficie,this.D.ice,this.D.objectif,this.D.typeDemmandeur,this.D.datesouhaite,this.D.tel,this.D.datemmande]
   ]
-})
+}) */
+
+
 
 doc.save('mon-demmande.pdf');
+
+
+
+//var pdfDocGenerator = pdfMake.createPdf(docDefinition);
+//pdfDocGenerator.download('mon_document.pdf');
+
+
   }
 
+
+
+
+
+
+
   exportToExcel(){
-    const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet('Nom_de_la_feuille');
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Nom_de_la_feuille');
     worksheet.pageSetup.paperSize = ExcelJS.PaperSize.Envelope_10;
 worksheet.pageSetup.orientation = 'landscape';
 worksheet.pageSetup.fitToPage = true;

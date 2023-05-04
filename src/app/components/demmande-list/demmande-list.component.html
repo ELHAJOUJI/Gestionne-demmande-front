@@ -28,7 +28,7 @@
 
  <tr>
   <th>ID</th> <th>NOM</th> <th>EMAIL</th> <th>SUPERFICIE</th> <th>ICE</th> <th>OBJECTIF</th> <th>TYPEDEMANDEUR</th> <th>DATESOUHAITE</th>
-   <th>TELEPHONE</th> <th>DATEDEMMANDE</th>   <th>SUPPRIMER</th> <th>MODIFIER</th> <th>OUVRIR</th>
+   <th>TELEPHONE</th> <th>DATEDEMANDE</th>   <th>SUPPRIMER</th> <th>MODIFIER</th> <th>OUVRIR</th>
 
  </tr>
 
@@ -43,12 +43,16 @@
     <td>{{D.datesouhaite}}</td>
     <td>{{D.tel}}</td>
     <td>{{D.datemmande}}</td>
-    <td> <button class="btn btn-danger" (click)="onDelete(D.id)"> Supprimer</button> </td>
+    <td> <button class="btn btn-danger" (click)="deleteItem(D.id)"> Supprimer</button> </td>
     <td> <button class="btn btn-primary" (click)="onEdit(D.id)"> Modifier</button> </td>
     <td> <button class="btn btn-success" (click)="onDisplay(D.id)"> Ouvrir</button> </td>
-    <td>  <button class="edite" class="btn btn-success" (click)="generatePdf(D.id)"> Editer</button></td>
+    <td>  <button class="edite" class="btn btn-success" (click)="generatePdf(D.id) "> Editer</button></td>
  </tr>
     </table>
     
-    
+    <div class="confirmation-dialog" *ngIf="confirmDelete">
+      <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
+      <button (click)="onDelete(D.id)">Supprimer</button>
+      <button (click)="confirmDelete = false">Annuler</button>
+    </div>
     <div>
